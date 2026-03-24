@@ -26,11 +26,11 @@ export type {
 
 // ─── High-level facade ────────────────────────────────────────────────────────
 
+import type { NetworkConfig } from "@hiero-waffles/core";
 import { MirrorNodeClient } from "./client.js";
+import type { MirrorNodeClientOptions } from "./client.js";
 import { AccountQueries } from "./queries/accounts.js";
 import { TokenQueries } from "./queries/tokens.js";
-import type { NetworkConfig } from "@hiero-waffles/core";
-import type { MirrorNodeClientOptions } from "./client.js";
 
 /**
  * Unified facade over all Mirror Node query builders.

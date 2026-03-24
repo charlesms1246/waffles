@@ -2,10 +2,10 @@
 import {
   MirrorNodeError,
   type NetworkConfig,
+  type QueryParams,
+  type RetryOptions,
   resolveMirrorNodeUrl,
   withRetry,
-  type RetryOptions,
-  type QueryParams,
 } from "@hiero-waffles/core";
 
 export interface MirrorNodeClientOptions {
@@ -43,8 +43,7 @@ export class MirrorNodeClient {
     this.baseUrl = resolveMirrorNodeUrl(options.networkConfig);
     this.retryOptions = {
       maxAttempts: options.networkConfig.maxRetries ?? 3,
-      isRetryable: (err) =>
-        err instanceof MirrorNodeError && err.statusCode >= 500,
+      isRetryable: (err) => err instanceof MirrorNodeError && err.statusCode >= 500,
       ...options.retryOptions,
     };
     this._fetch = options.fetch ?? globalThis.fetch.bind(globalThis);

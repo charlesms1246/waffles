@@ -43,13 +43,10 @@ export function resolveMirrorNodeUrl(config: NetworkConfig): string {
 /**
  * Resolve effective configuration, applying defaults for any omitted fields.
  */
-export function resolveNetworkConfig(
-  partial: NetworkConfig,
-): Required<NetworkConfig> {
+export function resolveNetworkConfig(partial: NetworkConfig): Required<NetworkConfig> {
   return {
     network: partial.network,
-    mirrorNodeUrl:
-      partial.mirrorNodeUrl ?? MIRROR_NODE_URLS[partial.network],
+    mirrorNodeUrl: partial.mirrorNodeUrl ?? MIRROR_NODE_URLS[partial.network],
     nodeAddresses: partial.nodeAddresses ?? {},
     timeoutMs: partial.timeoutMs ?? 10_000,
     maxRetries: partial.maxRetries ?? 3,

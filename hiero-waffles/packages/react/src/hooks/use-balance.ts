@@ -2,10 +2,10 @@
 //
 // Fetches and caches the HBAR + token balance for a given account ID.
 
-import { useState, useEffect, useCallback, useRef } from "react";
-import { useHiero } from "../context.js";
-import type { AccountInfo } from "@hiero-waffles/mirror-node";
 import type { EntityId } from "@hiero-waffles/core";
+import type { AccountInfo } from "@hiero-waffles/mirror-node";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useHiero } from "../context.js";
 
 export interface UseBalanceResult {
   /** Full account info (includes balance breakdown). `null` while loading. */

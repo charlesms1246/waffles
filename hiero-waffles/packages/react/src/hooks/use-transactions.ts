@@ -2,9 +2,9 @@
 //
 // Paginated transaction history for a given account, with load-more support.
 
-import { useState, useEffect, useCallback, useRef } from "react";
-import { useHiero } from "../context.js";
 import type { EntityId, TimestampRange } from "@hiero-waffles/core";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useHiero } from "../context.js";
 
 // We re-use the raw Mirror Node transaction shape; a more specific type
 // can be added once Mirror Node typings are fully fleshed out.
@@ -69,9 +69,10 @@ export function useTransactions(
   const [nextCursor, setNextCursor] = useState<string | null>(null);
 
   // Keep a stable ref to the iterator across renders
-  const iteratorRef = useRef<AsyncGenerator<
-    { items: TransactionRecord[]; next: string | null }
-  > | null>(null);
+  const iteratorRef = useRef<AsyncGenerator<{
+    items: TransactionRecord[];
+    next: string | null;
+  }> | null>(null);
   const mountedRef = useRef(true);
 
   const buildIterator = useCallback(() => {
@@ -85,7 +86,10 @@ export function useTransactions(
         : {}),
     };
 
-    return mirrorClient.accounts.listTransactions(accountId, txOptions) as AsyncGenerator<{
+    return mirrorClient.accounts.listTransactions(
+      accountId,
+      txOptions,
+    ) as AsyncGenerator<{
       items: TransactionRecord[];
       next: string | null;
     }>;
@@ -107,9 +111,13 @@ export function useTransactions(
 
     const iter = buildIterator();
     iteratorRef.current = iter;
+    if (!iter) {
+      if (mountedRef.current) setLoading(false);
+      return;
+    }
 
     try {
-      const { value, done } = await iter!.next();
+      const { value, done } = await iter.next();
       if (!mountedRef.current) return;
       if (!done && value) {
         setTransactions(value.items);

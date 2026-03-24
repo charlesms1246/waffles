@@ -3,15 +3,10 @@
 // Provides a React context that holds a configured HieroMirrorClient so
 // descendant components never need to instantiate the client themselves.
 
-import React, {
-  createContext,
-  useContext,
-  useMemo,
-  type ReactNode,
-} from "react";
-import { HieroMirrorClient } from "@hiero-waffles/mirror-node";
 import type { NetworkConfig } from "@hiero-waffles/core";
 import { ConfigurationError } from "@hiero-waffles/core";
+import { HieroMirrorClient } from "@hiero-waffles/mirror-node";
+import { type ReactNode, createContext, useContext, useMemo } from "react";
 
 // ─── Context shape ────────────────────────────────────────────────────────────
 
@@ -60,9 +55,7 @@ export function HieroProvider({
 }: HieroProviderProps) {
   const mirrorClient = useMemo(
     () => externalClient ?? new HieroMirrorClient(networkConfig),
-    // Re-create only when the network actually changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [networkConfig.network, networkConfig.mirrorNodeUrl, externalClient],
+    [networkConfig, externalClient],
   );
 
   const value = useMemo<HieroContextValue>(
@@ -70,9 +63,7 @@ export function HieroProvider({
     [mirrorClient, networkConfig],
   );
 
-  return (
-    <HieroContext.Provider value={value}>{children}</HieroContext.Provider>
-  );
+  return <HieroContext.Provider value={value}>{children}</HieroContext.Provider>;
 }
 
 // ─── Hook ─────────────────────────────────────────────────────────────────────

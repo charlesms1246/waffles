@@ -1,7 +1,7 @@
 // packages/mirror-node/src/__tests__/paginator.test.ts
-import { describe, it, expect, vi } from "vitest";
-import { paginate, collectAll } from "../pagination/paginator.js";
+import { describe, expect, it, vi } from "vitest";
 import type { MirrorNodeClient } from "../client.js";
+import { collectAll, paginate } from "../pagination/paginator.js";
 
 function makeClient(pages: Array<{ items: string[]; nextPath: string | null }>) {
   let callIndex = 0;
@@ -19,24 +19,37 @@ function makeClient(pages: Array<{ items: string[]; nextPath: string | null }>) 
 describe("paginate", () => {
   it("yields a single page when there is no next link", async () => {
     const client = makeClient([{ items: ["a", "b"], nextPath: null }]);
-    const pages = [];
-    for await (const page of paginate({ client, path: "/items", itemsKey: "items" })) {
+    const pages: Array<{ items: string[]; next: string | null }> = [];
+    for await (const page of paginate<string>({
+      client,
+      path: "/items",
+      itemsKey: "items",
+    })) {
       pages.push(page);
     }
     expect(pages).toHaveLength(1);
-    expect(pages[0].items).toEqual(["a", "b"]);
-    expect(pages[0].next).toBeNull();
+    const firstPage = pages[0];
+    expect(firstPage).toBeDefined();
+    if (!firstPage) {
+      throw new Error("Expected the first page to be present");
+    }
+    expect(firstPage.items).toEqual(["a", "b"]);
+    expect(firstPage.next).toBeNull();
   });
 
   it("follows next links across multiple pages", async () => {
     const client = makeClient([
       { items: ["a", "b"], nextPath: "/items?cursor=2" },
       { items: ["c", "d"], nextPath: "/items?cursor=3" },
-      { items: ["e"],      nextPath: null },
+      { items: ["e"], nextPath: null },
     ]);
 
     const allItems: string[] = [];
-    for await (const page of paginate({ client, path: "/items", itemsKey: "items" })) {
+    for await (const page of paginate<string>({
+      client,
+      path: "/items",
+      itemsKey: "items",
+    })) {
       allItems.push(...page.items);
     }
     expect(allItems).toEqual(["a", "b", "c", "d", "e"]);
@@ -45,11 +58,11 @@ describe("paginate", () => {
   it("respects maxItems and stops early", async () => {
     const client = makeClient([
       { items: ["a", "b", "c"], nextPath: "/items?cursor=2" },
-      { items: ["d", "e"],      nextPath: null },
+      { items: ["d", "e"], nextPath: null },
     ]);
 
     const allItems: string[] = [];
-    for await (const page of paginate({
+    for await (const page of paginate<string>({
       client,
       path: "/items",
       itemsKey: "items",
@@ -66,10 +79,14 @@ describe("collectAll", () => {
   it("returns all items across all pages as a flat array", async () => {
     const client = makeClient([
       { items: ["x", "y"], nextPath: "/items?cursor=2" },
-      { items: ["z"],      nextPath: null },
+      { items: ["z"], nextPath: null },
     ]);
 
-    const result = await collectAll({ client, path: "/items", itemsKey: "items" });
+    const result = await collectAll<string>({
+      client,
+      path: "/items",
+      itemsKey: "items",
+    });
     expect(result).toEqual(["x", "y", "z"]);
   });
 });

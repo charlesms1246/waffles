@@ -1,25 +1,10 @@
-// @ts-nocheck
-/**
- * docs/examples/react-quickstart.tsx
- *
- * Demonstrates the React integration kit:
- *  - Wrapping your app in <HieroProvider>
- *  - useBalance to display HBAR balance
- *  - useTransactions for a paginated transaction list
- *  - useScheduledTransaction to track a scheduled tx
- *
- * This is a JSX snippet — not a runnable Node script.
- * Drop it into a Next.js or Vite + React project.
- */
-
-import React from "react";
+import type { EntityId } from "@hiero-waffles/core";
 import {
   HieroProvider,
   useBalance,
-  useTransactions,
   useScheduledTransaction,
+  useTransactions,
 } from "@hiero-waffles/react";
-import type { EntityId } from "@hiero-waffles/core";
 
 // ─── 1. Wrap your app ─────────────────────────────────────────────────────────
 
@@ -40,7 +25,7 @@ function BalanceCard({ accountId }: { accountId: EntityId }) {
   });
 
   if (loading) return <p>Loading balance…</p>;
-  if (error)   return <p style={{ color: "red" }}>Error: {error.message}</p>;
+  if (error) return <p style={{ color: "red" }}>Error: {error.message}</p>;
 
   const hbar = hbarBalance != null ? Number(hbarBalance) / 1e8 : null;
 
@@ -48,7 +33,9 @@ function BalanceCard({ accountId }: { accountId: EntityId }) {
     <div>
       <h2>Balance</h2>
       <p>{hbar?.toFixed(8) ?? "—"} ℏ</p>
-      <button onClick={refresh}>Refresh</button>
+      <button type="button" onClick={refresh}>
+        Refresh
+      </button>
     </div>
   );
 }
@@ -60,7 +47,7 @@ function TransactionList({ accountId }: { accountId: EntityId }) {
     useTransactions(accountId, { limit: 25 });
 
   if (loading) return <p>Loading transactions…</p>;
-  if (error)   return <p style={{ color: "red" }}>Error: {error.message}</p>;
+  if (error) return <p style={{ color: "red" }}>Error: {error.message}</p>;
 
   return (
     <div>
@@ -74,7 +61,7 @@ function TransactionList({ accountId }: { accountId: EntityId }) {
         ))}
       </ul>
       {hasMore && (
-        <button onClick={loadMore} disabled={loadingMore}>
+        <button type="button" onClick={loadMore} disabled={loadingMore}>
           {loadingMore ? "Loading…" : "Load more"}
         </button>
       )}
@@ -85,23 +72,24 @@ function TransactionList({ accountId }: { accountId: EntityId }) {
 // ─── 4. Scheduled transaction status ─────────────────────────────────────────
 
 function ScheduleTracker({ scheduleId }: { scheduleId: EntityId }) {
-  const { status, scheduleInfo, polling, error } =
-    useScheduledTransaction(scheduleId, {
-      intervalMs: 3_000,
-      timeoutMs: 120_000,
-    });
+  const { status, scheduleInfo, polling, error } = useScheduledTransaction(scheduleId, {
+    intervalMs: 3_000,
+    timeoutMs: 120_000,
+  });
 
   const statusColor: Record<string, string> = {
     EXECUTED: "green",
-    DELETED:  "orange",
-    EXPIRED:  "gray",
-    PENDING:  "blue",
+    DELETED: "orange",
+    EXPIRED: "gray",
+    PENDING: "blue",
   };
 
   return (
     <div>
       <h2>Scheduled transaction</h2>
-      <p>Schedule ID: <code>{scheduleId}</code></p>
+      <p>
+        Schedule ID: <code>{scheduleId}</code>
+      </p>
       {polling && <p>⏳ Polling…</p>}
       {status && (
         <p style={{ color: statusColor[status] ?? "black" }}>

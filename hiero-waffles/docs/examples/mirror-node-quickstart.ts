@@ -11,8 +11,8 @@
  *   npx tsx docs/examples/mirror-node-quickstart.ts
  */
 
-import { HieroMirrorClient } from "@hiero-waffles/mirror-node";
 import type { EntityId } from "@hiero-waffles/core";
+import { HieroMirrorClient } from "@hiero-waffles/mirror-node";
 
 // ─── Instantiate ─────────────────────────────────────────────────────────────
 

@@ -2,11 +2,14 @@
 //
 // Poll a scheduled transaction's status and surface it as reactive state.
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import { useHiero } from "../context.js";
-import { waitForScheduledTransaction } from "@hiero-waffles/scheduled-tx";
-import type { ScheduleInfo, ScheduledTransactionStatus } from "@hiero-waffles/scheduled-tx";
 import type { EntityId } from "@hiero-waffles/core";
+import { waitForScheduledTransaction } from "@hiero-waffles/scheduled-tx";
+import type {
+  ScheduleInfo,
+  ScheduledTransactionStatus,
+} from "@hiero-waffles/scheduled-tx";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useHiero } from "../context.js";
 
 export interface UseScheduledTransactionResult {
   /** Current status. `null` while the first poll hasn't returned. */

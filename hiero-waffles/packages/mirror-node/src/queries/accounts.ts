@@ -1,7 +1,7 @@
+import type { EntityId, PaginationOptions, TimestampRange } from "@hiero-waffles/core";
 // packages/mirror-node/src/queries/accounts.ts
 import type { MirrorNodeClient } from "../client.js";
-import { paginate, collectAll } from "../pagination/paginator.js";
-import type { EntityId, TimestampRange, PaginationOptions } from "@hiero-waffles/core";
+import { collectAll, paginate } from "../pagination/paginator.js";
 
 // ─── Response shapes ─────────────────────────────────────────────────────────
 
@@ -63,12 +63,8 @@ export class AccountQueries {
     accountId: EntityId,
     options?: GetAccountOptions,
   ): Promise<AccountInfo> {
-    const params =
-      options?.includeBalance === false ? { balance: false } : undefined;
-    return this.client.get<AccountInfo>(
-      `/api/v1/accounts/${accountId}`,
-      params,
-    );
+    const params = options?.includeBalance === false ? { balance: false } : undefined;
+    return this.client.get<AccountInfo>(`/api/v1/accounts/${accountId}`, params);
   }
 
   /**
@@ -88,15 +84,15 @@ export class AccountQueries {
     };
 
     if (options?.timestampRange?.from) {
-      params["timestamp"] = `gte:${options.timestampRange.from}`;
+      params.timestamp = `gte:${options.timestampRange.from}`;
     }
     if (options?.timestampRange?.to) {
-      params["timestamp"] = `lte:${options.timestampRange.to}`;
+      params.timestamp = `lte:${options.timestampRange.to}`;
     }
 
     return paginate<unknown>({
       client: this.client,
-      path: `/api/v1/transactions`,
+      path: "/api/v1/transactions",
       itemsKey: "transactions",
       params: { ...params, "account.id": accountId },
     });
@@ -120,7 +116,7 @@ export class AccountQueries {
 
     return collectAll<unknown>({
       client: this.client,
-      path: `/api/v1/transactions`,
+      path: "/api/v1/transactions",
       itemsKey: "transactions",
       params,
       ...(options?.maxItems !== undefined ? { maxItems: options.maxItems } : {}),

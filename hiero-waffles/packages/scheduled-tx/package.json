@@ -35,7 +35,7 @@
   "files": ["dist", "src"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/charlesms1246/waffles.git",    
+    "url": "https://github.com/charlesms1246/waffles.git",
     "directory": "packages/scheduled-tx"
   }
 }

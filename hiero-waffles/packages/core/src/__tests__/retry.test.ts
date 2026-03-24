@@ -1,7 +1,7 @@
 // packages/core/src/__tests__/retry.test.ts
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { withRetry } from "../retry.js";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { RetryExhaustedError } from "../errors.js";
+import { withRetry } from "../retry.js";
 
 // Speed up tests by removing real delays
 vi.useFakeTimers();
@@ -37,9 +37,10 @@ describe("withRetry", () => {
     const fn = vi.fn().mockRejectedValue(new Error("always fails"));
 
     const promise = withRetry(fn, { maxAttempts: 3 });
+    const assertion = expect(promise).rejects.toBeInstanceOf(RetryExhaustedError);
     await vi.runAllTimersAsync();
 
-    await expect(promise).rejects.toBeInstanceOf(RetryExhaustedError);
+    await assertion;
     expect(fn).toHaveBeenCalledTimes(3);
   });
 
@@ -51,9 +52,10 @@ describe("withRetry", () => {
       maxAttempts: 5,
       isRetryable: () => false,
     });
+    const assertion = expect(promise).rejects.toBeInstanceOf(RetryExhaustedError);
     await vi.runAllTimersAsync();
 
-    await expect(promise).rejects.toBeInstanceOf(RetryExhaustedError);
+    await assertion;
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
@@ -61,13 +63,8 @@ describe("withRetry", () => {
     const fn = vi.fn().mockRejectedValue(new Error("fail"));
 
     const promise = withRetry(fn, { maxAttempts: 2 });
+    const assertion = expect(promise).rejects.toMatchObject({ attempts: 2 });
     await vi.runAllTimersAsync();
-
-    try {
-      await promise;
-    } catch (err) {
-      expect(err).toBeInstanceOf(RetryExhaustedError);
-      expect((err as RetryExhaustedError).attempts).toBe(2);
-    }
+    await assertion;
   });
 });

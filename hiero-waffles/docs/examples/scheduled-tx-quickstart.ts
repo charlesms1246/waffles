@@ -14,21 +14,19 @@
  *   OPERATOR_ID=0.0.xxxx OPERATOR_KEY=302... RECIPIENT_ID=0.0.yyyy npx tsx docs/examples/scheduled-tx-quickstart.ts
  */
 
-import {
-  Client,
-  PrivateKey,
-  TransferTransaction,
-  Hbar,
-} from "@hashgraph/sdk";
-import { ScheduledTransactionHelper, waitForScheduledTransaction } from "@hiero-waffles/scheduled-tx";
+import { Client, Hbar, PrivateKey, TransferTransaction } from "@hashgraph/sdk";
 import type { EntityId } from "@hiero-waffles/core";
+import {
+  ScheduledTransactionHelper,
+  waitForScheduledTransaction,
+} from "@hiero-waffles/scheduled-tx";
 
 const NETWORK = "testnet" as const;
 
 // ─── Load credentials from environment ───────────────────────────────────────
 
-const operatorId  = process.env["OPERATOR_ID"]  ?? "0.0.1234";
-const operatorKey = process.env["OPERATOR_KEY"]  ?? "";
+const operatorId = process.env["OPERATOR_ID"] ?? "0.0.1234";
+const operatorKey = process.env["OPERATOR_KEY"] ?? "";
 const recipientId = process.env["RECIPIENT_ID"] ?? "0.0.5678";
 
 if (!operatorKey) {

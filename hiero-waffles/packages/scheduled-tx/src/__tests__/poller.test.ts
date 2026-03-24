@@ -1,8 +1,8 @@
-// packages/scheduled-tx/src/__tests__/poller.test.ts
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { waitForScheduledTransaction } from "../poller.js";
 import { ScheduledTransactionError } from "@hiero-waffles/core";
 import type { EntityId } from "@hiero-waffles/core";
+// packages/scheduled-tx/src/__tests__/poller.test.ts
+import { describe, expect, it, vi } from "vitest";
+import { waitForScheduledTransaction } from "../poller.js";
 
 vi.useFakeTimers();
 
@@ -53,8 +53,8 @@ describe("waitForScheduledTransaction", () => {
 
   it("polls until EXECUTED status appears", async () => {
     const fetch = makeFetch([
-      makeMirrorResponse({}),                                              // PENDING
-      makeMirrorResponse({}),                                              // PENDING
+      makeMirrorResponse({}), // PENDING
+      makeMirrorResponse({}), // PENDING
       makeMirrorResponse({ executed_timestamp: "9999999999.000000000" }), // EXECUTED
     ]);
 
@@ -83,9 +83,10 @@ describe("waitForScheduledTransaction", () => {
       intervalMs: 100,
       timeoutMs: 5_000,
     });
+    const assertion = expect(promise).rejects.toBeInstanceOf(ScheduledTransactionError);
 
     await vi.runAllTimersAsync();
-    await expect(promise).rejects.toBeInstanceOf(ScheduledTransactionError);
+    await assertion;
   });
 
   it("throws a timeout error when the deadline is exceeded", async () => {
@@ -98,8 +99,9 @@ describe("waitForScheduledTransaction", () => {
       intervalMs: 500,
       timeoutMs: 1_000,
     });
+    const assertion = expect(promise).rejects.toThrow(/timeout/i);
 
     await vi.runAllTimersAsync();
-    await expect(promise).rejects.toThrow(/timeout/i);
+    await assertion;
   });
 });

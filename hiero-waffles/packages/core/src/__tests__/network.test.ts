@@ -1,17 +1,15 @@
 // packages/core/src/__tests__/network.test.ts
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
+  type NetworkConfig,
   resolveMirrorNodeUrl,
   resolveNetworkConfig,
-  type NetworkConfig,
 } from "../network.js";
 
 describe("resolveMirrorNodeUrl", () => {
   it("returns the canonical testnet URL by default", () => {
     const cfg: NetworkConfig = { network: "testnet" };
-    expect(resolveMirrorNodeUrl(cfg)).toBe(
-      "https://testnet.mirrornode.hedera.com",
-    );
+    expect(resolveMirrorNodeUrl(cfg)).toBe("https://testnet.mirrornode.hedera.com");
   });
 
   it("returns the canonical mainnet URL", () => {
@@ -30,9 +28,7 @@ describe("resolveMirrorNodeUrl", () => {
   });
 
   it("resolves local to localhost", () => {
-    expect(resolveMirrorNodeUrl({ network: "local" })).toBe(
-      "http://localhost:5551",
-    );
+    expect(resolveMirrorNodeUrl({ network: "local" })).toBe("http://localhost:5551");
   });
 });
 

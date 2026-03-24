@@ -15,28 +15,27 @@ import { RetryExhaustedError } from "./errors.js";
  * });
  */
 export async function withRetry(fn, options) {
-    const maxAttempts = options?.maxAttempts ?? 3;
-    const baseDelayMs = options?.baseDelayMs ?? 200;
-    const maxDelayMs = options?.maxDelayMs ?? 5_000;
-    const isRetryable = options?.isRetryable ?? (() => true);
-    let lastError;
-    for (let attempt = 0; attempt < maxAttempts; attempt++) {
-        try {
-            return await fn();
-        }
-        catch (err) {
-            lastError = err;
-            if (!isRetryable(err) || attempt === maxAttempts - 1) {
-                break;
-            }
-            const cappedDelay = Math.min(baseDelayMs * 2 ** attempt, maxDelayMs);
-            const jitteredDelay = Math.random() * cappedDelay;
-            await sleep(jitteredDelay);
-        }
+  const maxAttempts = options?.maxAttempts ?? 3;
+  const baseDelayMs = options?.baseDelayMs ?? 200;
+  const maxDelayMs = options?.maxDelayMs ?? 5_000;
+  const isRetryable = options?.isRetryable ?? (() => true);
+  let lastError;
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastError = err;
+      if (!isRetryable(err) || attempt === maxAttempts - 1) {
+        break;
+      }
+      const cappedDelay = Math.min(baseDelayMs * 2 ** attempt, maxDelayMs);
+      const jitteredDelay = Math.random() * cappedDelay;
+      await sleep(jitteredDelay);
     }
-    throw new RetryExhaustedError(maxAttempts, lastError);
+  }
+  throw new RetryExhaustedError(maxAttempts, lastError);
 }
 function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 //# sourceMappingURL=retry.js.map

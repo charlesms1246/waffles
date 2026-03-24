@@ -6,11 +6,8 @@
 //  - Auto-population of payer / node configuration from NetworkConfig
 //  - A convenience method to query the Mirror Node for schedule info
 
-import type { NetworkConfig, EntityId } from "@hiero-waffles/core";
-import {
-  ScheduledTransactionError,
-  ConfigurationError,
-} from "@hiero-waffles/core";
+import type { EntityId, NetworkConfig } from "@hiero-waffles/core";
+import { ConfigurationError, ScheduledTransactionError } from "@hiero-waffles/core";
 
 // These types mirror the @hashgraph/sdk API.  We use conditional imports
 // so the package compiles without the SDK being installed (useful in
@@ -20,11 +17,7 @@ type Transaction = import("@hashgraph/sdk").Transaction;
 type PrivateKey = import("@hashgraph/sdk").PrivateKey;
 type TransactionId = import("@hashgraph/sdk").TransactionId;
 
-export type ScheduledTransactionStatus =
-  | "PENDING"
-  | "EXECUTED"
-  | "DELETED"
-  | "EXPIRED";
+export type ScheduledTransactionStatus = "PENDING" | "EXECUTED" | "DELETED" | "EXPIRED";
 
 export interface ScheduleInfo {
   scheduleId: EntityId;
@@ -118,10 +111,7 @@ export class ScheduledTransactionHelper {
     const receipt = await response.getReceipt(this.client);
 
     if (!receipt.scheduleId) {
-      throw new ScheduledTransactionError(
-        "unknown",
-        "No scheduleId returned in receipt",
-      );
+      throw new ScheduledTransactionError("unknown", "No scheduleId returned in receipt");
     }
 
     return {
@@ -137,10 +127,7 @@ export class ScheduledTransactionHelper {
    * @param signerKey  - The private key to sign with.
    * @returns The transaction ID of the sign transaction.
    */
-  async sign(
-    scheduleId: EntityId,
-    signerKey: PrivateKey,
-  ): Promise<TransactionId> {
+  async sign(scheduleId: EntityId, signerKey: PrivateKey): Promise<TransactionId> {
     const { ScheduleSignTransaction } = await import("@hashgraph/sdk");
 
     const signTx = new ScheduleSignTransaction().setScheduleId(scheduleId);

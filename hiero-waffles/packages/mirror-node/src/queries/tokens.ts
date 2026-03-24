@@ -1,7 +1,7 @@
+import type { EntityId, PaginationOptions } from "@hiero-waffles/core";
 // packages/mirror-node/src/queries/tokens.ts
 import type { MirrorNodeClient } from "../client.js";
-import { paginate, collectAll } from "../pagination/paginator.js";
-import type { EntityId, PaginationOptions } from "@hiero-waffles/core";
+import { collectAll, paginate } from "../pagination/paginator.js";
 
 // ─── Response shapes ─────────────────────────────────────────────────────────
 
@@ -108,9 +108,7 @@ export class TokenQueries {
    * Fetch a specific NFT by token ID and serial number.
    */
   async getNft(tokenId: EntityId, serialNumber: number): Promise<NftInfo> {
-    return this.client.get<NftInfo>(
-      `/api/v1/tokens/${tokenId}/nfts/${serialNumber}`,
-    );
+    return this.client.get<NftInfo>(`/api/v1/tokens/${tokenId}/nfts/${serialNumber}`);
   }
 
   /**

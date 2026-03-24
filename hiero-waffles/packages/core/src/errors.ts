@@ -26,9 +26,7 @@ export class MirrorNodeError extends HieroError {
     public readonly endpoint: string,
     public readonly body: unknown,
   ) {
-    super(
-      `Mirror Node request failed: ${statusCode} ${endpoint}`,
-    );
+    super(`Mirror Node request failed: ${statusCode} ${endpoint}`);
     this.name = "MirrorNodeError";
   }
 }
@@ -55,9 +53,7 @@ export class ScheduledTransactionError extends HieroError {
     public readonly scheduleId: string,
     public readonly status: string,
   ) {
-    super(
-      `Scheduled transaction ${scheduleId} ended with status: ${status}`,
-    );
+    super(`Scheduled transaction ${scheduleId} ended with status: ${status}`);
     this.name = "ScheduledTransactionError";
   }
 }

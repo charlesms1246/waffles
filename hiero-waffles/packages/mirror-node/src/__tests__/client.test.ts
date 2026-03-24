@@ -1,7 +1,7 @@
+import { MirrorNodeError, RetryExhaustedError } from "@hiero-waffles/core";
 // packages/mirror-node/src/__tests__/client.test.ts
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { MirrorNodeClient } from "../client.js";
-import { MirrorNodeError } from "@hiero-waffles/core";
 
 function makeFetch(status: number, body: unknown) {
   return vi.fn().mockResolvedValue({
@@ -46,13 +46,11 @@ describe("MirrorNodeClient", () => {
   });
 
   it("returns the parsed JSON body", async () => {
-    const result = await client.get<{ account: string }>(
-      "/api/v1/accounts/0.0.1234",
-    );
+    const result = await client.get<{ account: string }>("/api/v1/accounts/0.0.1234");
     expect(result).toEqual({ account: "0.0.1234" });
   });
 
-  it("throws MirrorNodeError on 404", async () => {
+  it("throws RetryExhaustedError on 404", async () => {
     fetchMock = makeFetch(404, { _status: { messages: [{ message: "Not found" }] } });
     client = new MirrorNodeClient({
       networkConfig: { network: "testnet", maxRetries: 1 },
@@ -60,11 +58,11 @@ describe("MirrorNodeClient", () => {
     });
 
     await expect(client.get("/api/v1/accounts/0.0.9999")).rejects.toBeInstanceOf(
-      MirrorNodeError,
+      RetryExhaustedError,
     );
   });
 
-  it("includes the status code on MirrorNodeError", async () => {
+  it("includes the status code on the wrapped MirrorNodeError", async () => {
     fetchMock = makeFetch(429, "rate limited");
     client = new MirrorNodeClient({
       networkConfig: { network: "testnet", maxRetries: 1 },
@@ -74,8 +72,10 @@ describe("MirrorNodeClient", () => {
     try {
       await client.get("/api/v1/accounts/0.0.1");
     } catch (err) {
-      expect(err).toBeInstanceOf(MirrorNodeError);
-      expect((err as MirrorNodeError).statusCode).toBe(429);
+      expect(err).toBeInstanceOf(RetryExhaustedError);
+      const cause = (err as RetryExhaustedError).cause;
+      expect(cause).toBeInstanceOf(MirrorNodeError);
+      expect((cause as MirrorNodeError).statusCode).toBe(429);
     }
   });
 });

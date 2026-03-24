@@ -1,6 +1,6 @@
+import type { Page, QueryParams } from "@hiero-waffles/core";
 // packages/mirror-node/src/pagination/paginator.ts
 import type { MirrorNodeClient } from "../client.js";
-import type { Page, QueryParams } from "@hiero-waffles/core";
 
 /**
  * Shape of the raw Mirror Node pagination envelope.
@@ -11,7 +11,7 @@ interface MirrorNodeListResponse<T> {
   links: { next: string | null };
 }
 
-export interface PaginatorOptions<T> {
+export interface PaginatorOptions<_T> {
   client: MirrorNodeClient;
   /** Initial path, e.g. `/api/v1/transactions`. */
   path: string;
@@ -85,9 +85,7 @@ export async function* paginate<T>(
  *   params: { "account.id": "0.0.1234", limit: 100 },
  * });
  */
-export async function collectAll<T>(
-  options: PaginatorOptions<T>,
-): Promise<T[]> {
+export async function collectAll<T>(options: PaginatorOptions<T>): Promise<T[]> {
   const results: T[] = [];
   for await (const page of paginate(options)) {
     results.push(...page.items);
