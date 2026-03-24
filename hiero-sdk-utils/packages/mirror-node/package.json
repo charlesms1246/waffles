@@ -1,0 +1,34 @@
+{
+  "name": "@hiero-sdk-utils/mirror-node",
+  "version": "0.1.0",
+  "description": "Typed Mirror Node client with pagination helpers for Hiero networks",
+  "type": "module",
+  "license": "Apache-2.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@hiero-sdk-utils/core": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "files": ["dist", "src"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/hiero-sdk-utils.git",
+    "directory": "packages/mirror-node"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "jsx": "react-jsx",
+    "paths": {
+      "@hiero-sdk-utils/core": ["../core/src/index.ts"],
+      "@hiero-sdk-utils/mirror-node": ["../mirror-node/src/index.ts"],
+      "@hiero-sdk-utils/scheduled-tx": ["../scheduled-tx/src/index.ts"]
+    }
+  }
+}
