@@ -2,7 +2,7 @@
   "name": "hiero-waffles",
   "private": false,
   "description": "A developer-experience library for Hiero networks",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
   "exports": {
     "./core": {
