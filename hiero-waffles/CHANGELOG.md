@@ -10,7 +10,14 @@ Do not edit it manually — run `pnpm changeset` to record changes.
 
 ## Unreleased
 
-### hiero-waffles/core@0.1.0
+### hiero-waffles@1.0.7
+
+- Added explicit root `exports` entries for `./core`, `./mirror-node`,
+  `./scheduled-tx`, and `./react`, all pointing to production `dist` outputs.
+- Restricted root publish contents via `files` so the npm tarball contains only
+  essential metadata and built `dist` artifacts.
+
+### @hiero-waffles/core@0.1.0
 
 **Initial release.**
 
@@ -20,7 +27,7 @@ Do not edit it manually — run `pnpm changeset` to record changes.
 - `withRetry` utility with exponential back-off and full jitter.
 - Shared types: `EntityId`, `Page<T>`, `PaginationOptions`, `TimestampRange`.
 
-### hiero-waffles/mirror-node@0.1.0
+### @hiero-waffles/mirror-node@0.1.0
 
 **Initial release.**
 
@@ -31,7 +38,7 @@ Do not edit it manually — run `pnpm changeset` to record changes.
 - `paginate<T>` — async generator following `links.next` cursors.
 - `collectAll<T>` — convenience wrapper to collect all pages into an array.
 
-### hiero-waffles/scheduled-tx@0.1.0
+### @hiero-waffles/scheduled-tx@0.1.0
 
 **Initial release.**
 
@@ -40,7 +47,7 @@ Do not edit it manually — run `pnpm changeset` to record changes.
   interval and timeout; throws `ScheduledTransactionError` on terminal
   non-executed states.
 
-### hiero-waffles/react@0.1.0
+### @hiero-waffles/react@0.1.0
 
 **Initial release.**
 
