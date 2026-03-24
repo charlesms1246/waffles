@@ -50,8 +50,8 @@ scheduled-tx package requires `@hashgraph/sdk >= 2.40` as a peer dependency.
 ### Mirror Node client
 
 ```typescript
-import { HieroMirrorClient } from "hiero-waffles/mirror-node";
-import type { EntityId } from "hiero-waffles/core";
+import { HieroMirrorClient } from "@hiero-waffles/mirror-node";
+import type { EntityId } from "@@@hiero-waffles/core";
 
 const mirror = new HieroMirrorClient({ network: "testnet" });
 
@@ -79,8 +79,8 @@ import { Client, TransferTransaction, Hbar, PrivateKey } from "@hashgraph/sdk";
 import {
   ScheduledTransactionHelper,
   waitForScheduledTransaction,
-} from "hiero-waffles/scheduled-tx";
-import type { EntityId } from "hiero-waffles/core";
+} from "@hiero-waffles/scheduled-tx";
+import type { EntityId } from "@hiero-waffles/core";
 
 const client = Client.forTestnet().setOperator(operatorId, operatorKey);
 const helper = new ScheduledTransactionHelper(client, { network: "testnet" });
@@ -111,7 +111,7 @@ console.log(`Executed at: ${result.executedTimestamp}`);
 
 ```tsx
 // main.tsx — wrap your app once
-import { HieroProvider } from "hiero-waffles/react";
+import { HieroProvider } from "@hiero-waffles/react";
 
 root.render(
   <HieroProvider networkConfig={{ network: "testnet" }}>
@@ -120,8 +120,8 @@ root.render(
 );
 
 // BalanceCard.tsx — use hooks anywhere inside the tree
-import { useBalance } from "hiero-waffles/react";
-import type { EntityId } from "hiero-waffles/core";
+import { useBalance } from "@hiero-waffles/react";
+import type { EntityId } from "@hiero-waffles/core";
 
 function BalanceCard({ accountId }: { accountId: EntityId }) {
   const { hbarBalance, loading, error, refresh } = useBalance(accountId, {
@@ -140,7 +140,7 @@ function BalanceCard({ accountId }: { accountId: EntityId }) {
 }
 
 // TransactionList.tsx — infinite-scroll pattern
-import { useTransactions } from "hiero-waffles/react";
+import { useTransactions } from "@hiero-waffles/react";
 
 function TransactionList({ accountId }: { accountId: EntityId }) {
   const { transactions, hasMore, loadMore, loadingMore } =
@@ -165,7 +165,7 @@ Full runnable examples live in [`docs/examples/`](docs/examples/).
 
 ## API reference
 
-### `hiero-waffles/core`
+### `@hiero-waffles/core`
 
 | Export | Description |
 |--------|-------------|
@@ -181,7 +181,7 @@ Full runnable examples live in [`docs/examples/`](docs/examples/).
 | `EntityId` | Branded type — `"${number}.${number}.${number}"` |
 | `Page<T>` | Paginated result with `items` and `next` cursor |
 
-### `hiero-waffles/mirror-node`
+### `@hiero-waffles/mirror-node`
 
 | Export | Description |
 |--------|-------------|
@@ -192,7 +192,7 @@ Full runnable examples live in [`docs/examples/`](docs/examples/).
 | `paginate<T>(opts)` | Async generator — yields `Page<T>` following `links.next` |
 | `collectAll<T>(opts)` | Convenience — collect all pages into a flat array |
 
-### `hiero-waffles/scheduled-tx`
+### `@hiero-waffles/scheduled-tx`
 
 | Export | Description |
 |--------|-------------|
@@ -201,7 +201,7 @@ Full runnable examples live in [`docs/examples/`](docs/examples/).
 | `ScheduleInfo` | Full schedule state returned by the poller |
 | `ScheduledTransactionStatus` | `"PENDING" \| "EXECUTED" \| "DELETED" \| "EXPIRED"` |
 
-### `hiero-waffles/react`
+### `@hiero-waffles/react`
 
 | Export | Description |
 |--------|-------------|
@@ -246,7 +246,7 @@ import {
   HieroError,
   MirrorNodeError,
   RetryExhaustedError,
-} from "hiero-waffles/core";
+} from "@hiero-waffles/core";
 
 try {
   const info = await mirror.accounts.getAccount("0.0.1234" as EntityId);
