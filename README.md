@@ -17,10 +17,10 @@ networks that makes the everyday developer experience better.
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| [`@hiero-waffles/core`](packages/core) | [![npm](https://img.shields.io/npm/v/@hiero-waffles/core)](https://www.npmjs.com/package/@hiero-waffles/core) | Shared types, errors, retry logic |
-| [`@hiero-waffles/mirror-node`](packages/mirror-node) | [![npm](https://img.shields.io/npm/v/@hiero-waffles/mirror-node)](https://www.npmjs.com/package/@hiero-waffles/mirror-node) | Typed Mirror Node client with pagination |
-| [`@hiero-waffles/scheduled-tx`](packages/scheduled-tx) | [![npm](https://img.shields.io/npm/v/@hiero-waffles/scheduled-tx)](https://www.npmjs.com/package/@hiero-waffles/scheduled-tx) | Create, sign, and track scheduled transactions |
-| [`@hiero-waffles/react`](packages/react) | [![npm](https://img.shields.io/npm/v/@hiero-waffles/react)](https://www.npmjs.com/package/@hiero-waffles/react) | React hooks and provider for Hiero flows |
+| [`hiero-waffles/core`](packages/core) | [![npm](https://img.shields.io/npm/v/hiero-waffles)](https://www.npmjs.com/package/hiero-waffles) | Shared types, errors, retry logic |
+| [`hiero-waffles/mirror-node`](packages/mirror-node) | [![npm](https://img.shields.io/npm/v/hiero-waffles)](https://www.npmjs.com/package/hiero-waffles) | Typed Mirror Node client with pagination |
+| [`hiero-waffles/scheduled-tx`](packages/scheduled-tx) | [![npm](https://img.shields.io/npm/v/hiero-waffles)](https://www.npmjs.com/package/hiero-waffles) | Create, sign, and track scheduled transactions |
+| [`hiero-waffles/react`](packages/react) | [![npm](https://img.shields.io/npm/v/hiero-waffles)](https://www.npmjs.com/package/hiero-waffles) | React hooks and provider for Hiero flows |
 
 ---
 
@@ -30,16 +30,16 @@ Install only the packages you need:
 
 ```bash
 # npm
-npm install @hiero-waffles/mirror-node
+npm install hiero-waffles/mirror-node
 
 # pnpm
-pnpm add @hiero-waffles/mirror-node
+pnpm add hiero-waffles/mirror-node
 
 # yarn
-yarn add @hiero-waffles/mirror-node
+yarn add hiero-waffles/mirror-node
 ```
 
-`@hiero-waffles/core` is a direct dependency of every other package and is
+`hiero-waffles/core` is a direct dependency of every other package and is
 installed automatically. The React package requires `react >= 18`. The
 scheduled-tx package requires `@hashgraph/sdk >= 2.40` as a peer dependency.
 

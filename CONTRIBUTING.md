@@ -64,10 +64,10 @@ pnpm test
 ```
 hiero-waffles/
 ├── packages/
-│   ├── core/           # @hiero-waffles/core   — shared types, errors, retry
-│   ├── mirror-node/    # @hiero-waffles/mirror-node — typed Mirror Node client
-│   ├── scheduled-tx/   # @hiero-waffles/scheduled-tx — scheduled tx helpers
-│   └── react/          # @hiero-waffles/react  — React hooks and provider
+│   ├── core/           # hiero-waffles/core   — shared types, errors, retry
+│   ├── mirror-node/    # hiero-waffles/mirror-node — typed Mirror Node client
+│   ├── scheduled-tx/   # hiero-waffles/scheduled-tx — scheduled tx helpers
+│   └── react/          # hiero-waffles/react  — React hooks and provider
 ├── docs/
 │   └── examples/       # Runnable quickstart examples
 ├── .github/

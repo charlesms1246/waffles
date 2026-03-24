@@ -1,5 +1,5 @@
 {
-  "name": "@hiero-waffles/mirror-node",
+  "name": "hiero-waffles/mirror-node",
   "version": "0.1.0",
   "description": "Typed Mirror Node client with pagination helpers for Hiero networks",
   "type": "module",
@@ -19,7 +19,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@hiero-waffles/core": "workspace:*"
+    "hiero-waffles/core": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.6.0",

@@ -1,5 +1,5 @@
 {
-  "name": "@hiero-waffles/scheduled-tx",
+  "name": "hiero-waffles/scheduled-tx",
   "version": "0.1.0",
   "description": "Create, sign, and track Hiero scheduled transactions",
   "type": "module",

@@ -1,5 +1,5 @@
 {
-  "name": "@hiero-waffles/react",
+  "name": "hiero-waffles/react",
   "version": "0.1.0",
   "description": "React hooks and provider for Hiero network integration",
   "type": "module",
