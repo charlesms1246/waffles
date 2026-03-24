@@ -2,13 +2,12 @@
   "extends": "../../tsconfig.base.json",
   "include": ["src"],
   "compilerOptions": {
-    "rootDir": "src",
     "outDir": "dist",
     "jsx": "react-jsx",
     "paths": {
-      "@hiero-waffles/core": ["../core/dist/index.d.ts"],
-      "@hiero-waffles/mirror-node": ["../mirror-node/dist/index.d.ts"],
-      "@hiero-waffles/scheduled-tx": ["../scheduled-tx/dist/index.d.ts"]
+      "@hiero-waffles/core": ["../core/src/index.ts"],
+      "@hiero-waffles/mirror-node": ["../mirror-node/src/index.ts"],
+      "@hiero-waffles/scheduled-tx": ["../scheduled-tx/src/index.ts"]
     }
   }
 }
