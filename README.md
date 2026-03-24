@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/charlesms1246/waffles/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/charlesms1246/waffles/actions/workflows/ci.yml?query=branch%3Amain)
 ![npm version](https://img.shields.io/npm/v/hiero-waffles?label=npm)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](https://github.com/charlesms1246/waffles/blob/main/hiero-waffles/LICENSE)
 
 
 A production-minded TypeScript utility library for [Hiero](https://hiero.org/)
@@ -288,4 +288,4 @@ full guide, including:
 
 ## License
 
-[Apache 2.0](LICENSE) © hiero-waffles contributors
+[Apache 2.0](hiero-waffles/LICENSE) © hiero-waffles contributors
