@@ -4,6 +4,33 @@
   "description": "A developer-experience library for Hiero networks",
   "version": "1.0.0",
   "type": "module",
+  "exports": {
+    "./core": {
+      "import": "./packages/core/dist/index.js",
+      "types": "./packages/core/dist/index.d.ts"
+    },
+    "./mirror-node": {
+      "import": "./packages/mirror-node/dist/index.js",
+      "types": "./packages/mirror-node/dist/index.d.ts"
+    },
+    "./scheduled-tx": {
+      "import": "./packages/scheduled-tx/dist/index.js",
+      "types": "./packages/scheduled-tx/dist/index.d.ts"
+    },
+    "./react": {
+      "import": "./packages/react/dist/index.js",
+      "types": "./packages/react/dist/index.d.ts"
+    }
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "packages/core/dist",
+    "packages/mirror-node/dist",
+    "packages/scheduled-tx/dist",
+    "packages/react/dist"
+  ],
   "scripts": {
     "build": "pnpm -r build",
     "test": "pnpm -r test",
