@@ -1,5 +1,5 @@
 {
-  "name": "hiero-waffles/react",
+  "name": "@hiero-waffles/react",
   "version": "0.1.0",
   "description": "React hooks and provider for Hiero network integration",
   "type": "module",
@@ -19,9 +19,9 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "hiero-waffles/core": "workspace:*",
-    "hiero-waffles/mirror-node": "workspace:*",
-    "hiero-waffles/scheduled-tx": "workspace:*"
+    "@hiero-waffles/core": "workspace:*",
+    "@hiero-waffles/mirror-node": "workspace:*",
+    "@hiero-waffles/scheduled-tx": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18.0.0",

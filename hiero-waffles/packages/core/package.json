@@ -1,5 +1,5 @@
 {
-  "name": "hiero-waffles/core",
+  "name": "@hiero-waffles/core",
   "version": "0.1.0",
   "description": "Shared types, errors, and utilities for hiero-waffles",
   "type": "module",
