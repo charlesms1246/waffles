@@ -5,7 +5,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "paths": {
-      "@hiero-sdk-utils/core": ["../core/src/index.ts"]
+      "@hiero-waffles/core": ["../core/src/index.ts"]
     }
   }
 }

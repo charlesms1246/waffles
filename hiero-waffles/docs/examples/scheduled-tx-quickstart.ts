@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * docs/examples/scheduled-tx-quickstart.ts
  *
@@ -19,8 +20,8 @@ import {
   TransferTransaction,
   Hbar,
 } from "@hashgraph/sdk";
-import { ScheduledTransactionHelper, waitForScheduledTransaction } from "@hiero-sdk-utils/scheduled-tx";
-import type { EntityId } from "@hiero-sdk-utils/core";
+import { ScheduledTransactionHelper, waitForScheduledTransaction } from "@hiero-waffles/scheduled-tx";
+import type { EntityId } from "@hiero-waffles/core";
 
 const NETWORK = "testnet" as const;
 

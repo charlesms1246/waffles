@@ -1,7 +1,7 @@
 // packages/mirror-node/src/queries/accounts.ts
 import type { MirrorNodeClient } from "../client.js";
 import { paginate, collectAll } from "../pagination/paginator.js";
-import type { EntityId, TimestampRange, PaginationOptions } from "@hiero-sdk-utils/core";
+import type { EntityId, TimestampRange, PaginationOptions } from "@hiero-waffles/core";
 
 // ─── Response shapes ─────────────────────────────────────────────────────────
 

@@ -11,7 +11,7 @@
 **Please do not file a public GitHub issue for security vulnerabilities.**
 
 Report security issues by emailing **security@your-org.example.com** with the
-subject line `[hiero-sdk-utils] Security vulnerability`.
+subject line `[hiero-waffles] Security vulnerability`.
 
 Include:
 

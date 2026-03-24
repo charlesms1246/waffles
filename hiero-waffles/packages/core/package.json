@@ -1,7 +1,7 @@
 {
-  "name": "@hiero-sdk-utils/core",
+  "name": "@hiero-waffles/core",
   "version": "0.1.0",
-  "description": "Shared types, errors, and utilities for hiero-sdk-utils",
+  "description": "Shared types, errors, and utilities for hiero-waffles",
   "type": "module",
   "license": "Apache-2.0",
   "main": "./dist/index.js",
@@ -25,7 +25,7 @@
   "files": ["dist", "src"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/hiero-sdk-utils.git",
+    "url": "https://github.com/your-org/hiero-waffles.git",
     "directory": "packages/core"
   }
 }

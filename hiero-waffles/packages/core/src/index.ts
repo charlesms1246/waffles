@@ -1,5 +1,5 @@
 // packages/core/src/index.ts
-// Central export barrel for @hiero-sdk-utils/core
+// Central export barrel for @hiero-waffles/core
 
 export * from "./network.js";
 export * from "./errors.js";

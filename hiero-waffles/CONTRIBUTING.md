@@ -1,4 +1,4 @@
-# Contributing to hiero-sdk-utils
+# Contributing to hiero-waffles
 
 Thank you for investing time in this project! This document covers everything
 you need to get from zero to merged pull request.
@@ -44,8 +44,8 @@ By participating you agree to abide by its terms.
 
 ```bash
 # 1. Fork and clone the repo
-git clone https://github.com/<your-fork>/hiero-sdk-utils.git
-cd hiero-sdk-utils
+git clone https://github.com/<your-fork>/hiero-waffles.git
+cd hiero-waffles
 
 # 2. Install dependencies (pnpm workspaces installs all packages)
 pnpm install
@@ -62,12 +62,12 @@ pnpm test
 ## Project structure
 
 ```
-hiero-sdk-utils/
+hiero-waffles/
 ├── packages/
-│   ├── core/           # @hiero-sdk-utils/core   — shared types, errors, retry
-│   ├── mirror-node/    # @hiero-sdk-utils/mirror-node — typed Mirror Node client
-│   ├── scheduled-tx/   # @hiero-sdk-utils/scheduled-tx — scheduled tx helpers
-│   └── react/          # @hiero-sdk-utils/react  — React hooks and provider
+│   ├── core/           # @hiero-waffles/core   — shared types, errors, retry
+│   ├── mirror-node/    # @hiero-waffles/mirror-node — typed Mirror Node client
+│   ├── scheduled-tx/   # @hiero-waffles/scheduled-tx — scheduled tx helpers
+│   └── react/          # @hiero-waffles/react  — React hooks and provider
 ├── docs/
 │   └── examples/       # Runnable quickstart examples
 ├── .github/

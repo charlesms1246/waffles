@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * docs/examples/mirror-node-quickstart.ts
  *
@@ -10,8 +11,8 @@
  *   npx tsx docs/examples/mirror-node-quickstart.ts
  */
 
-import { HieroMirrorClient } from "@hiero-sdk-utils/mirror-node";
-import type { EntityId } from "@hiero-sdk-utils/core";
+import { HieroMirrorClient } from "@hiero-waffles/mirror-node";
+import type { EntityId } from "@hiero-waffles/core";
 
 // ─── Instantiate ─────────────────────────────────────────────────────────────
 

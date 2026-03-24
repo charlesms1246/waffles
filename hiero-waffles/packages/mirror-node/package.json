@@ -1,5 +1,5 @@
 {
-  "name": "@hiero-sdk-utils/mirror-node",
+  "name": "@hiero-waffles/mirror-node",
   "version": "0.1.0",
   "description": "Typed Mirror Node client with pagination helpers for Hiero networks",
   "type": "module",
@@ -19,7 +19,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@hiero-sdk-utils/core": "workspace:*"
+    "@hiero-waffles/core": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.6.0",
@@ -28,7 +28,7 @@
   "files": ["dist", "src"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/hiero-sdk-utils.git",
+    "url": "https://github.com/your-org/hiero-waffles.git",
     "directory": "packages/mirror-node"
   }
 }

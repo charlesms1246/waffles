@@ -1,5 +1,5 @@
 /**
- * Base class for all errors thrown by hiero-sdk-utils.
+ * Base class for all errors thrown by hiero-waffles
  * Extends the built-in Error so `instanceof HieroError` works across
  * package boundaries.
  */

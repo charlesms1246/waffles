@@ -9,7 +9,7 @@ import {
   type NetworkConfig,
   resolveMirrorNodeUrl,
   withRetry,
-} from "@hiero-sdk-utils/core";
+} from "@hiero-waffles/core";
 import type { ScheduleInfo, ScheduledTransactionStatus } from "./helper.js";
 
 export interface WaitOptions {

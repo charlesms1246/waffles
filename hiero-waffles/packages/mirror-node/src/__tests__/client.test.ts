@@ -1,7 +1,7 @@
 // packages/mirror-node/src/__tests__/client.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { MirrorNodeClient } from "../client.js";
-import { MirrorNodeError } from "@hiero-sdk-utils/core";
+import { MirrorNodeError } from "@hiero-waffles/core";
 
 function makeFetch(status: number, body: unknown) {
   return vi.fn().mockResolvedValue({

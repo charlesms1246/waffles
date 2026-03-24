@@ -6,7 +6,7 @@ import {
   withRetry,
   type RetryOptions,
   type QueryParams,
-} from "@hiero-sdk-utils/core";
+} from "@hiero-waffles/core";
 
 export interface MirrorNodeClientOptions {
   networkConfig: NetworkConfig;

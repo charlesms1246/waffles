@@ -1,8 +1,8 @@
 // packages/scheduled-tx/src/__tests__/poller.test.ts
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { waitForScheduledTransaction } from "../poller.js";
-import { ScheduledTransactionError } from "@hiero-sdk-utils/core";
-import type { EntityId } from "@hiero-sdk-utils/core";
+import { ScheduledTransactionError } from "@hiero-waffles/core";
+import type { EntityId } from "@hiero-waffles/core";
 
 vi.useFakeTimers();
 

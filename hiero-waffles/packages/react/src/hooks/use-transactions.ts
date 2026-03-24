@@ -4,7 +4,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useHiero } from "../context.js";
-import type { EntityId, TimestampRange } from "@hiero-sdk-utils/core";
+import type { EntityId, TimestampRange } from "@hiero-waffles/core";
 
 // We re-use the raw Mirror Node transaction shape; a more specific type
 // can be added once Mirror Node typings are fully fleshed out.
@@ -76,12 +76,19 @@ export function useTransactions(
 
   const buildIterator = useCallback(() => {
     if (!accountId) return null;
-    return mirrorClient.accounts.listTransactions(accountId, {
+    const txOptions = {
       limit: options?.limit ?? 25,
-      type: options?.type,
-      result: options?.result,
-      timestampRange: options?.timestampRange,
-    }) as AsyncGenerator<{ items: TransactionRecord[]; next: string | null }>;
+      ...(options?.type !== undefined ? { type: options.type } : {}),
+      ...(options?.result !== undefined ? { result: options.result } : {}),
+      ...(options?.timestampRange !== undefined
+        ? { timestampRange: options.timestampRange }
+        : {}),
+    };
+
+    return mirrorClient.accounts.listTransactions(accountId, txOptions) as AsyncGenerator<{
+      items: TransactionRecord[];
+      next: string | null;
+    }>;
   }, [
     accountId,
     mirrorClient,

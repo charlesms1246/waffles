@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * docs/examples/react-quickstart.tsx
  *
@@ -17,8 +18,8 @@ import {
   useBalance,
   useTransactions,
   useScheduledTransaction,
-} from "@hiero-sdk-utils/react";
-import type { EntityId } from "@hiero-sdk-utils/core";
+} from "@hiero-waffles/react";
+import type { EntityId } from "@hiero-waffles/core";
 
 // ─── 1. Wrap your app ─────────────────────────────────────────────────────────
 

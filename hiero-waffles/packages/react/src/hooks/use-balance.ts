@@ -4,8 +4,8 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useHiero } from "../context.js";
-import type { AccountInfo } from "@hiero-sdk-utils/mirror-node";
-import type { EntityId } from "@hiero-sdk-utils/core";
+import type { AccountInfo } from "@hiero-waffles/mirror-node";
+import type { EntityId } from "@hiero-waffles/core";
 
 export interface UseBalanceResult {
   /** Full account info (includes balance breakdown). `null` while loading. */

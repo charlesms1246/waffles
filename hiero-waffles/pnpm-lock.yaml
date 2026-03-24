@@ -32,7 +32,7 @@ importers:
 
   packages/mirror-node:
     dependencies:
-      '@hiero-sdk-utils/core':
+      '@hiero-waffles/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -45,13 +45,13 @@ importers:
 
   packages/react:
     dependencies:
-      '@hiero-sdk-utils/core':
+      '@hiero-waffles/core':
         specifier: workspace:*
         version: link:../core
-      '@hiero-sdk-utils/mirror-node':
+      '@hiero-waffles/mirror-node':
         specifier: workspace:*
         version: link:../mirror-node
-      '@hiero-sdk-utils/scheduled-tx':
+      '@hiero-waffles/scheduled-tx':
         specifier: workspace:*
         version: link:../scheduled-tx
     devDependencies:
@@ -76,7 +76,7 @@ importers:
 
   packages/scheduled-tx:
     dependencies:
-      '@hiero-sdk-utils/core':
+      '@hiero-waffles/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:

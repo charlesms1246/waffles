@@ -11,7 +11,7 @@ body:
     id: package
     attributes:
       label: Affected package(s)
-      placeholder: "@hiero-sdk-utils/mirror-node"
+      placeholder: "@hiero-waffles/mirror-node"
     validations:
       required: true
 

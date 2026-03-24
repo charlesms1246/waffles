@@ -1,6 +1,6 @@
 // packages/mirror-node/src/pagination/paginator.ts
 import type { MirrorNodeClient } from "../client.js";
-import type { Page, QueryParams } from "@hiero-sdk-utils/core";
+import type { Page, QueryParams } from "@hiero-waffles/core";
 
 /**
  * Shape of the raw Mirror Node pagination envelope.

@@ -1,5 +1,5 @@
 {
-  "name": "@hiero-sdk-utils/react",
+  "name": "@hiero-waffles/react",
   "version": "0.1.0",
   "description": "React hooks and provider for Hiero network integration",
   "type": "module",
@@ -19,9 +19,9 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@hiero-sdk-utils/core": "workspace:*",
-    "@hiero-sdk-utils/mirror-node": "workspace:*",
-    "@hiero-sdk-utils/scheduled-tx": "workspace:*"
+    "@hiero-waffles/core": "workspace:*",
+    "@hiero-waffles/mirror-node": "workspace:*",
+    "@hiero-waffles/scheduled-tx": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
@@ -38,7 +38,7 @@
   "files": ["dist", "src"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/hiero-sdk-utils.git",
+    "url": "https://github.com/your-org/hiero-waffles.git",
     "directory": "packages/react"
   }
 }

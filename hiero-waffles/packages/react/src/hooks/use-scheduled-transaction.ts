@@ -4,9 +4,9 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useHiero } from "../context.js";
-import { waitForScheduledTransaction } from "@hiero-sdk-utils/scheduled-tx";
-import type { ScheduleInfo, ScheduledTransactionStatus } from "@hiero-sdk-utils/scheduled-tx";
-import type { EntityId } from "@hiero-sdk-utils/core";
+import { waitForScheduledTransaction } from "@hiero-waffles/scheduled-tx";
+import type { ScheduleInfo, ScheduledTransactionStatus } from "@hiero-waffles/scheduled-tx";
+import type { EntityId } from "@hiero-waffles/core";
 
 export interface UseScheduledTransactionResult {
   /** Current status. `null` while the first poll hasn't returned. */

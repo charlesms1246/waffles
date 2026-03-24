@@ -6,11 +6,11 @@
 //  - Auto-population of payer / node configuration from NetworkConfig
 //  - A convenience method to query the Mirror Node for schedule info
 
-import type { NetworkConfig, EntityId } from "@hiero-sdk-utils/core";
+import type { NetworkConfig, EntityId } from "@hiero-waffles/core";
 import {
   ScheduledTransactionError,
   ConfigurationError,
-} from "@hiero-sdk-utils/core";
+} from "@hiero-waffles/core";
 
 // These types mirror the @hashgraph/sdk API.  We use conditional imports
 // so the package compiles without the SDK being installed (useful in
@@ -61,7 +61,7 @@ export interface CreateScheduledTransactionOptions {
  *
  * @example
  * import { Client, TransferTransaction, Hbar } from "@hashgraph/sdk";
- * import { ScheduledTransactionHelper } from "@hiero-sdk-utils/scheduled-tx";
+ * import { ScheduledTransactionHelper } from "@hiero-waffles/scheduled-tx";
  *
  * const client = Client.forTestnet().setOperator(operatorId, operatorKey);
  * const helper = new ScheduledTransactionHelper(client, { network: "testnet" });

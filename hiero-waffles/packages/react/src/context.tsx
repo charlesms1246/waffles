@@ -9,9 +9,9 @@ import React, {
   useMemo,
   type ReactNode,
 } from "react";
-import { HieroMirrorClient } from "@hiero-sdk-utils/mirror-node";
-import type { NetworkConfig } from "@hiero-sdk-utils/core";
-import { ConfigurationError } from "@hiero-sdk-utils/core";
+import { HieroMirrorClient } from "@hiero-waffles/mirror-node";
+import type { NetworkConfig } from "@hiero-waffles/core";
+import { ConfigurationError } from "@hiero-waffles/core";
 
 // ─── Context shape ────────────────────────────────────────────────────────────
 
@@ -45,7 +45,7 @@ export interface HieroProviderProps {
  *
  * @example
  * // main.tsx
- * import { HieroProvider } from "@hiero-sdk-utils/react";
+ * import { HieroProvider } from "@hiero-waffles/react";
  *
  * root.render(
  *   <HieroProvider networkConfig={{ network: "testnet" }}>

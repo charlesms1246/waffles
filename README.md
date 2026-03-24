@@ -1,6 +1,6 @@
-# hiero-sdk-utils
+# hiero-waffles
 
-[![CI](https://github.com/your-org/hiero-sdk-utils/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/hiero-sdk-utils/actions/workflows/ci.yml)
+[![CI](https://github.com/charlesms1246g/waffles/actions/workflows/ci.yml/badge.svg)](https://github.com/charlesms1246/waffles/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg)](https://pnpm.io/)
 
@@ -17,10 +17,10 @@ networks that makes the everyday developer experience better.
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| [`@hiero-sdk-utils/core`](packages/core) | [![npm](https://img.shields.io/npm/v/@hiero-sdk-utils/core)](https://www.npmjs.com/package/@hiero-sdk-utils/core) | Shared types, errors, retry logic |
-| [`@hiero-sdk-utils/mirror-node`](packages/mirror-node) | [![npm](https://img.shields.io/npm/v/@hiero-sdk-utils/mirror-node)](https://www.npmjs.com/package/@hiero-sdk-utils/mirror-node) | Typed Mirror Node client with pagination |
-| [`@hiero-sdk-utils/scheduled-tx`](packages/scheduled-tx) | [![npm](https://img.shields.io/npm/v/@hiero-sdk-utils/scheduled-tx)](https://www.npmjs.com/package/@hiero-sdk-utils/scheduled-tx) | Create, sign, and track scheduled transactions |
-| [`@hiero-sdk-utils/react`](packages/react) | [![npm](https://img.shields.io/npm/v/@hiero-sdk-utils/react)](https://www.npmjs.com/package/@hiero-sdk-utils/react) | React hooks and provider for Hiero flows |
+| [`@hiero-waffles/core`](packages/core) | [![npm](https://img.shields.io/npm/v/@hiero-waffles/core)](https://www.npmjs.com/package/@hiero-waffles/core) | Shared types, errors, retry logic |
+| [`@hiero-waffles/mirror-node`](packages/mirror-node) | [![npm](https://img.shields.io/npm/v/@hiero-waffles/mirror-node)](https://www.npmjs.com/package/@hiero-waffles/mirror-node) | Typed Mirror Node client with pagination |
+| [`@hiero-waffles/scheduled-tx`](packages/scheduled-tx) | [![npm](https://img.shields.io/npm/v/@hiero-waffles/scheduled-tx)](https://www.npmjs.com/package/@hiero-waffles/scheduled-tx) | Create, sign, and track scheduled transactions |
+| [`@hiero-waffles/react`](packages/react) | [![npm](https://img.shields.io/npm/v/@hiero-waffles/react)](https://www.npmjs.com/package/@hiero-waffles/react) | React hooks and provider for Hiero flows |
 
 ---
 
@@ -30,16 +30,16 @@ Install only the packages you need:
 
 ```bash
 # npm
-npm install @hiero-sdk-utils/mirror-node
+npm install @hiero-waffles/mirror-node
 
 # pnpm
-pnpm add @hiero-sdk-utils/mirror-node
+pnpm add @hiero-waffles/mirror-node
 
 # yarn
-yarn add @hiero-sdk-utils/mirror-node
+yarn add @hiero-waffles/mirror-node
 ```
 
-`@hiero-sdk-utils/core` is a direct dependency of every other package and is
+`@hiero-waffles/core` is a direct dependency of every other package and is
 installed automatically. The React package requires `react >= 18`. The
 scheduled-tx package requires `@hashgraph/sdk >= 2.40` as a peer dependency.
 
@@ -50,8 +50,8 @@ scheduled-tx package requires `@hashgraph/sdk >= 2.40` as a peer dependency.
 ### Mirror Node client
 
 ```typescript
-import { HieroMirrorClient } from "@hiero-sdk-utils/mirror-node";
-import type { EntityId } from "@hiero-sdk-utils/core";
+import { HieroMirrorClient } from "@hiero-waffles/mirror-node";
+import type { EntityId } from "@hiero-waffles/core";
 
 const mirror = new HieroMirrorClient({ network: "testnet" });
 
@@ -79,8 +79,8 @@ import { Client, TransferTransaction, Hbar, PrivateKey } from "@hashgraph/sdk";
 import {
   ScheduledTransactionHelper,
   waitForScheduledTransaction,
-} from "@hiero-sdk-utils/scheduled-tx";
-import type { EntityId } from "@hiero-sdk-utils/core";
+} from "@hiero-waffles/scheduled-tx";
+import type { EntityId } from "@hiero-waffles/core";
 
 const client = Client.forTestnet().setOperator(operatorId, operatorKey);
 const helper = new ScheduledTransactionHelper(client, { network: "testnet" });
@@ -111,7 +111,7 @@ console.log(`Executed at: ${result.executedTimestamp}`);
 
 ```tsx
 // main.tsx — wrap your app once
-import { HieroProvider } from "@hiero-sdk-utils/react";
+import { HieroProvider } from "@hiero-waffles/react";
 
 root.render(
   <HieroProvider networkConfig={{ network: "testnet" }}>
@@ -120,8 +120,8 @@ root.render(
 );
 
 // BalanceCard.tsx — use hooks anywhere inside the tree
-import { useBalance } from "@hiero-sdk-utils/react";
-import type { EntityId } from "@hiero-sdk-utils/core";
+import { useBalance } from "@hiero-waffles/react";
+import type { EntityId } from "@hiero-waffles/core";
 
 function BalanceCard({ accountId }: { accountId: EntityId }) {
   const { hbarBalance, loading, error, refresh } = useBalance(accountId, {
@@ -140,7 +140,7 @@ function BalanceCard({ accountId }: { accountId: EntityId }) {
 }
 
 // TransactionList.tsx — infinite-scroll pattern
-import { useTransactions } from "@hiero-sdk-utils/react";
+import { useTransactions } from "@hiero-waffles/react";
 
 function TransactionList({ accountId }: { accountId: EntityId }) {
   const { transactions, hasMore, loadMore, loadingMore } =
@@ -165,7 +165,7 @@ Full runnable examples live in [`docs/examples/`](docs/examples/).
 
 ## API reference
 
-### `@hiero-sdk-utils/core`
+### `@hiero-waffles/core`
 
 | Export | Description |
 |--------|-------------|
@@ -181,7 +181,7 @@ Full runnable examples live in [`docs/examples/`](docs/examples/).
 | `EntityId` | Branded type — `"${number}.${number}.${number}"` |
 | `Page<T>` | Paginated result with `items` and `next` cursor |
 
-### `@hiero-sdk-utils/mirror-node`
+### `@hiero-waffles/mirror-node`
 
 | Export | Description |
 |--------|-------------|
@@ -192,7 +192,7 @@ Full runnable examples live in [`docs/examples/`](docs/examples/).
 | `paginate<T>(opts)` | Async generator — yields `Page<T>` following `links.next` |
 | `collectAll<T>(opts)` | Convenience — collect all pages into a flat array |
 
-### `@hiero-sdk-utils/scheduled-tx`
+### `@hiero-waffles/scheduled-tx`
 
 | Export | Description |
 |--------|-------------|
@@ -201,7 +201,7 @@ Full runnable examples live in [`docs/examples/`](docs/examples/).
 | `ScheduleInfo` | Full schedule state returned by the poller |
 | `ScheduledTransactionStatus` | `"PENDING" \| "EXECUTED" \| "DELETED" \| "EXPIRED"` |
 
-### `@hiero-sdk-utils/react`
+### `@hiero-waffles/react`
 
 | Export | Description |
 |--------|-------------|
@@ -246,7 +246,7 @@ import {
   HieroError,
   MirrorNodeError,
   RetryExhaustedError,
-} from "@hiero-sdk-utils/core";
+} from "@hiero-waffles/core";
 
 try {
   const info = await mirror.accounts.getAccount("0.0.1234" as EntityId);
@@ -278,4 +278,4 @@ full guide, including:
 
 ## License
 
-[Apache 2.0](LICENSE) © hiero-sdk-utils contributors
+[Apache 2.0](LICENSE) © hiero-waffles contributors
