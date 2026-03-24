@@ -51,7 +51,7 @@ scheduled-tx package requires `@hashgraph/sdk >= 2.40` as a peer dependency.
 
 ```typescript
 import { HieroMirrorClient } from "@hiero-waffles/mirror-node";
-import type { EntityId } from "@@@hiero-waffles/core";
+import type { EntityId } from "@hiero-waffles/core";
 
 const mirror = new HieroMirrorClient({ network: "testnet" });
 
