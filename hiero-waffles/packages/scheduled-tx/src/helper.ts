@@ -92,7 +92,7 @@ export class ScheduledTransactionHelper {
     transactionId: TransactionId;
   }> {
     // Lazy-import to allow test environments to mock @hashgraph/sdk
-    const { ScheduleCreateTransaction } = await import("@hashgraph/sdk");
+    const { AccountId, ScheduleCreateTransaction } = await import("@hashgraph/sdk");
 
     if (!options.memo || options.memo.length <= 100) {
       // memo length is fine
@@ -111,7 +111,7 @@ export class ScheduledTransactionHelper {
     }
 
     if (options.payerAccountId) {
-      scheduleTx.setPayerAccountId(options.payerAccountId);
+      scheduleTx.setPayerAccountId(AccountId.fromString(options.payerAccountId));
     }
 
     const response = await scheduleTx.execute(this.client);

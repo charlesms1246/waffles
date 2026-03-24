@@ -123,7 +123,7 @@ export class AccountQueries {
       path: `/api/v1/transactions`,
       itemsKey: "transactions",
       params,
-      maxItems: options?.maxItems,
+      ...(options?.maxItems !== undefined ? { maxItems: options.maxItems } : {}),
     });
   }
 }

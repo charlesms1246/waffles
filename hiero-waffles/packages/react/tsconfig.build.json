@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@hiero-sdk-utils/core": ["../core/dist/index.d.ts"],
+      "@hiero-sdk-utils/mirror-node": ["../mirror-node/dist/index.d.ts"],
+      "@hiero-sdk-utils/scheduled-tx": ["../scheduled-tx/dist/index.d.ts"]
+    }
+  },
+  "exclude": ["src/__tests__"]
+}
