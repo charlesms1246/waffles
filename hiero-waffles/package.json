@@ -1,6 +1,6 @@
 {
   "name": "hiero-waffles",
-  "private": true,
+  "private": false,
   "description": "A developer-experience library for Hiero networks",
   "version": "0.0.0",
   "type": "module",
