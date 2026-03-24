@@ -7,6 +7,15 @@
 A production-minded TypeScript utility library for [Hiero](https://hiero.org/)
 networks that makes the everyday developer experience better.
 
+
+- **Packages:** <br>
+1. [`packages/hiero-waffles/core`](./hiero-waffles/packages/core)
+2. [`packages/hiero-waffles/mirror-node`](./hiero-waffles/packages/mirror-node)
+3. [`packages/hiero-waffles/react`](./hiero-waffles/packages/react)
+4. [`packages/hiero-waffles/scheduled-tx`](./hiero-waffles/packages/scheduled-tx)
+
+- **NPM:**[`hiero-waffles`](https://www.npmjs.com/package/hiero-waffles)
+
 > **Inspired by** [hiero-enterprise-java](https://github.com/OpenElements/hiero-enterprise-java) —
 > the same philosophy of clean APIs, strong typing, and contribution hygiene,
 > brought to the TypeScript ecosystem.
