@@ -1,6 +1,6 @@
 # hiero-waffles
 
-[![CI](https://github.com/your-org/hiero-waffles/actions/workflows/ci.yml/badge.svg)](https://github.com/your-org/hiero-waffles/actions/workflows/ci.yml)
+[![CI](https://github.com/charlesms1246/waffles/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/charlesms1246/waffles/actions/workflows/ci.yml?query=branch%3Amain)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg)](https://pnpm.io/)
 
