@@ -2,7 +2,7 @@
   "name": "hiero-waffles",
   "private": false,
   "description": "A developer-experience library for Hiero networks",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "license": "Apache-2.0",
   "type": "module",
   "types": "./packages/core/dist/index.d.ts",
